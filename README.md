@@ -1,1 +1,4 @@
-**Alethea's project
+# Alethea's project #
+
+----------
+init project
