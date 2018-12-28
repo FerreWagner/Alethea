@@ -2,3 +2,5 @@
 
 ----------
 init project
+
+![Alethea Plan](Alethea.svg)
