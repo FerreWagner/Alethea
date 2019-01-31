@@ -17,7 +17,6 @@ class Article extends Model
         Article::event('before_insert', function($_data){
             if (self::getSystem()['type'] == config('website.local')){
                 if(@$_FILES['thumb']['tmp_name']){
-                    
                     $_file = request()->file('thumb');
                     $_info = $_file->move(ROOT_PATH . 'public' . DS . 'uploads');
                     if ($_info){    //upload success

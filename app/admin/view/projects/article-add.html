@@ -5,7 +5,7 @@
 
 <body>
         <div class="x-body">
-            <form class="layui-form layui-form-pane" id="aform" action="{:url('admin/article/add')}" method="post" enctype="multipart/form-data">
+            <form class="layui-form layui-form-pane" id="aform" action="{:url('admin/projects/add')}" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
                     <label for="L_title" class="layui-form-label">
                         标题
@@ -30,9 +30,9 @@
                         <div class="layui-input-block">
                             <select lay-verify="required" name="cate">
                                 <optgroup label="类别选项">
-                                {volist name="cate" id="ca"}
-                                	<option value="{$ca.id}" {if condition="$ca['catename'] eq 'Alexa'"}selected=""{/if}>{$ca.catename}</option>
-                                {/volist}
+                                    {volist name="cate" id="ca"}
+                                    <option value="{$ca.id}" {if condition="$ca['catename'] eq 'Alexa'"}selected=""{/if}>{$ca.catename}</option>
+                                    {/volist}
                                 </optgroup>
                             </select>
                         </div>

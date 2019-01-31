@@ -2,16 +2,15 @@
 <script src="__STATIC__/ueditor/ueditor.config.js"></script>
 <script src="__STATIC__/ueditor/ueditor.all.min.js"></script>
 <script src="__STATIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
-
 <body>
         <div class="x-body">
-            <form class="layui-form layui-form-pane" id="aform" action="{:url('admin/article/add')}" method="post" enctype="multipart/form-data">
+            <form class="layui-form layui-form-pane" action="" method="post" enctype="multipart/form-data">
                 <div class="layui-form-item">
                     <label for="L_title" class="layui-form-label">
                         标题
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" id="title" name="title" value="" required lay-verify="title" autocomplete="off" class="layui-input">
+                        <input type="text" id="title" name="title" value="{$article.title}" required lay-verify="title" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -19,23 +18,7 @@
                         作者
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="author" value="" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-inline">
-                        <label class="layui-form-label">
-                            所在类别
-                        </label>
-                        <div class="layui-input-block">
-                            <select lay-verify="required" name="cate">
-                                <optgroup label="类别选项">
-                                {volist name="cate" id="ca"}
-                                	<option value="{$ca.id}" {if condition="$ca['catename'] eq 'Alexa'"}selected=""{/if}>{$ca.catename}</option>
-                                {/volist}
-                                </optgroup>
-                            </select>
-                        </div>
+                        <input type="text" name="author" value="{$article.author}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
 
@@ -44,7 +27,7 @@
                         关键词
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="keywords" value="" autocomplete="off" class="layui-input">
+                        <input type="text" name="keywords" value="{$article.keywords}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -52,83 +35,55 @@
                         描述
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="desc" value="" autocomplete="off" class="layui-input">
+                        <input type="text" name="desc" value="{$article.desc}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                
                 <div class="layui-form-item">
-                    <label for="thumb" class="layui-form-label">
+                    <label for="kkeywords" class="layui-form-label">
                         缩略图
                     </label>
                     <div class="layui-input-block">
-				            <input type="file" id="uploadForm" name="thumb" class="layui-btn layui-btn-primary"/> 
-				            <!-- <input type="button" value="上传" class="layui-btn" onclick="doUpload();">   -->
-					</div>
-                    
+                        <input type="file" name="thumb" class="layui-btn layui-btn-primary">
+                        {if condition="$article['thumb'] neq ''"}
+                        <img style="float:left;" src="{$article.thumb}" width="200">
+                        {else /}
+                        暂无缩略图
+                        {/if}
+                    </div>
                 </div>
-                
                 <div class="layui-form-item">
                     <label for="order" class="layui-form-label">
                        排序
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="order" placeholder="按照数字倒叙" value="" autocomplete="off" class="layui-input">
+                        <input type="text" name="order" value="{$article.order}" autocomplete="off" class="layui-input">
                     </div>
                 </div>
-                
-                <!--<div class="layui-form-item">
+
+                <div class="layui-form-item">
                     <label for="see" class="layui-form-label">
                         浏览
                     </label>
                     <div class="layui-input-block">
-                        <input type="text" name="see" value="" autocomplete="off" class="layui-input">
+                        <input type="text" name="see" value="{$article.see}" autocomplete="off" class="layui-input">
                     </div>
-                </div>-->
-                
+                </div>
                 <div class="layui-form-item layui-form-text">
                     <div class="layui-input-block">
-                        <textarea id="content" name="content"></textarea>
+                        <textarea id="content" name="content">{$article.content}</textarea>
                     </div>
                     <label for="content" class="layui-form-label" style="top: -2px;">
-                       内容
+                        内容
                     </label>
                 </div>
-                
+
                 <div class="layui-form-item">
                     <input class="layui-btn" type="submit" value="立即发布" lay-filter="add" lay-submit>
                        
                 </div>
-                {:token()}
             </form>
         </div>
         {include file='public/base_js' /}
-        
-		<script type="text/javascript">  
-		    function doUpload() {    
-		        var form = document.getElementById("aform");
-		        var fd = new FormData(form);
-		        $.ajax({    
-		          url: "{:url('article/upload')}" ,
-		          type: 'POST',    
-		          data: fd, 
-		          async: false,    
-		          cache: false,    
-		          contentType: false,    
-		          processData: false,    
-		          success: function (response,status,xhr) {
-		        	  layer.msg('上传成功', {icon: 6});
-		        	  console.log(xhr);
-		       	  },    
-		          error: function (returndata) {
-		        	  layer.msg('上传失败', {icon: 5});
-		        	  console.log(returndata);
-
-		        	  //原来的处理方式
-		              //alert(returndata);    
-		          }    
-		      });    
-			}    
-		</script>  
 
         <script>
             layui.use(['form','layer','layedit'], function(){

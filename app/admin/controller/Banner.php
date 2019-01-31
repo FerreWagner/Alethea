@@ -8,17 +8,9 @@ use think\Loader;
 use app\admin\model\Article as ArticleModel;
 use think\Validate;
 
-class Article extends Base
+class Banner extends Base
 {
-    
-    /**
-     * 前置操作
-     */
-//     protected $beforeActionList  = [
-//         'mailServe' => ['only' => 'delete'],    //前置操作的方法请勿在前添加空格
-//     ];
-    
-    
+
     /**
      * 显示资源列表
      *
@@ -26,8 +18,8 @@ class Article extends Base
      */
     public function index(Request $request)
     {
-        $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->paginate(config('conf.page'));
-        $count   = db('article')->where(['type' => config('article_type.blog')])->count();
+        $article = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.banner')])->paginate(config('conf.page'));
+        $count   = db('article')->where(['type' => config('article_type.banner')])->count();
         //search function
         if ($request->isPost()){
             $search  = $request->param();
@@ -53,7 +45,6 @@ class Article extends Base
     }
 
 
-
     /**
      * 保存新建的资源
      *
@@ -70,13 +61,14 @@ class Article extends Base
             
             $data = input('post.');
             $data['time'] = time();    //写入时间戳
-            $validate = Loader::validate('Article');
+            $data['type'] = config('article_type.banner');
+            $validate = Loader::validate('Banner');
             if(!$validate->scene('add')->check($data)){
                 $this->error($validate->getError());
             }
             $article = new ArticleModel();
             if($article->allowField(true)->save($data)){
-                $this->redirect('admin/article/index');
+                $this->redirect('admin/banner/index');
             }else{
                 $this->error('添加失败');
             }
@@ -88,47 +80,6 @@ class Article extends Base
         return $this->view->fetch('article-add');
     }
     
-        //七牛test
-//     public function upload(Request $request)
-//     {
-        
-//         if ($request->isPost()){
-            
-//             $file = $request->file('thumb');
-//             //本地路径
-//             $filePath = $file->getRealPath();
-//             //获取后缀
-//             $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
-//             //上传到七牛后保存的文件名(加盐)
-//             $key = config('salt.password_salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
-            
-//             $ak = config('qiniu.ak');
-//             $sk = config('qiniu.sk');
-            
-//             //构建鉴权对象
-//             $auth = new Auth($ak, $sk);
-//             //要上传的空间
-//             $bucket = config('qiniu.bucket');
-//             $domain = config('qiniu.domain');
-//             $token = $auth->uploadToken($bucket);
-            
-//             //初始化uploadmanager对象并进行文件的上传
-//             $uploadMgr = new UploadManager();
-            
-//             //调用uploadmanager的putfile方法进行文件的上传
-//             list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-            
-//             if ($err !== null){
-//                 return ['err' => 1, 'msg' => $err, 'data' => ''];
-//             }else {
-//                 //返回图片的完整URL
-//                 return ['err' => 0, 'msg' => '上传完成', 'data' => ($domain.'/'.$ret['key'])];
-//             }
-            
-//         }
-        
-//     }
-
 
     /**
      * 显示编辑资源表单页.
@@ -140,14 +91,14 @@ class Article extends Base
     {
         if ($request->isPost()){
             $data = $request->param();
-            $validate = Loader::validate('Article');
+            $validate = Loader::validate('Banner');
             if(!$validate->scene('edit')->check($data)){
                 $this->error($validate->getError());
             }
-            $article = new ArticleModel;
+            $article = new ArticleModel();
             $save=$article->update($data);
             if($save){
-                $this->success('修改文章成功！',url('admin/article/index'));
+                $this->success('修改文章成功！',url('admin/banner/index'));
             }else{
                 $this->error('修改文章失败！');
             }
@@ -175,30 +126,9 @@ class Article extends Base
     public function delete($id)
     {
         if(ArticleModel::destroy($id)){
-            $this->success('删除文章成功！',url('admin/article/index'));
+            $this->success('删除文章成功！',url('admin/banner/index'));
         }else{
             $this->error('删除文章失败！');
         }
     }
-    
-    /**
-     * 邮件服务
-     */
-//     public function mailServe()
-//     {
-//         if (Mail::isMail() == config('mail.close')) return true;
-        
-//         $user_email = session('user_data')['email'];
-// //         halt($user_email);
-//         $mail = new Mail();
-//         $mail->getXml('admin');
-//         $mail->recive = $user_email;
-//         $mail->init();
-//         $mail->content();
-//         $mail->replay();
-//         if (!$mail->send()){
-//             $this->error('Mail Server Error.');
-//         }
-        
-//     }
 }

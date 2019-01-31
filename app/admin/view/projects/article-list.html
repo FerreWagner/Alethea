@@ -4,8 +4,8 @@
         <div class="x-nav">
             <span class="layui-breadcrumb">
               <a><cite>首页</cite></a>
-              <a><cite>会员管理</cite></a>
-              <a><cite>问题/资讯列表</cite></a>
+              <a><cite>作品管理</cite></a>
+              <a><cite>新增</cite></a>
             </span>
             <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"  href="javascript:location.replace(location.href);" title="刷新"><i class="layui-icon" style="line-height:30px">ဂ</i></a>
         </div>
@@ -29,7 +29,7 @@
                   </div>
                 </div>
             </form>
-            <xblock><a href="{:url('admin/article/add')}"><button class="layui-btn"><i class="layui-icon">&#xe608;</i>添加</button></a><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
+            <xblock><a href="{:url('admin/projects/add')}"><button class="layui-btn"><i class="layui-icon">&#xe608;</i>添加</button></a><span class="x-right" style="line-height:40px">共有数据：{$count} 条</span></xblock>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -80,10 +80,10 @@
                                 {$art.see}
                             </td>
                             <td class="td-manage">
-                                <a title="编辑" href="{:url('admin/article/edit', ['id' => $art['id']])}" class="ml-5" style="text-decoration:none">
+                                <a title="编辑" href="{:url('admin/projects/edit', ['id' => $art['id']])}" class="ml-5" style="text-decoration:none">
                                     <i class="layui-icon">&#xe642;</i>
                                 </a>
-                                <a title="删除" onclick="return confirm('你确定删除该文章？')" href="{:url('admin/article/delete',['id' => $art['id']])}" style="text-decoration:none">
+                                <a title="删除" onclick="return confirm('你确定删除该文章？')" href="{:url('admin/projects/delete',['id' => $art['id']])}" style="text-decoration:none">
                                     <i class="layui-icon">&#xe640;</i>
                                 </a>
                             </td>
