@@ -1,0 +1,14 @@
+<?php
+namespace app\index\controller;
+
+use think\Controller;
+
+class Project extends Controller
+{
+    public function index()
+    {
+        return $this->view->fetch('project/projects');
+    }
+    
+    
+}
