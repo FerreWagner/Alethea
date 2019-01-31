@@ -24,7 +24,7 @@ class Article extends Model
                         //pic zip
                         $ferreImg       = new \ferreImgDetail();
                         $ferrePath      = 'uploads/thumb';
-                        $ferrePic       = $ferreImg->cutImg($detail_pic, 570, 750, 'alexa', 20, $ferrePath);    //具体详见参数
+                        $ferrePic       = $ferreImg->cutImg($detail_pic, 770, 400, 'alexa', 20, $ferrePath);    //具体详见参数
                         $_data['thumb'] = '/uploads/thumb/'.$ferrePic;
                         $_data['pic']   = '/uploads/' . $_info->getSaveName();
                         return $_data['thumb'] ? ['err' => 0, 'msg' => '上传完成', 'data' => $_data['thumb']] : ['err' => 1, 'msg' => '本地上传失败', 'data' => ''];

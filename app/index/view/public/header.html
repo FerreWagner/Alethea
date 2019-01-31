@@ -1,0 +1,32 @@
+﻿<!--
+=============================================
+    Top Header
+==============================================
+-->
+<div class="top-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-12">
+				<div class="news-bell">Recent Post :</div>
+				<div class="breaking-news easyTicker">
+					<div class="wrapper">
+						{volist name="recent" id="recentss"}
+						<div class="list"><a href="{:url('index/index/singlePost', ['id' => $recentss.id])}">{$recentss.title}</a></div>
+						{/volist}
+					</div> <!-- /.wrapper -->
+				</div> <!-- /.breaking-news -->
+			</div>
+			<div class="col-lg-4 col-12">
+				<ul class="social-icon text-right">
+					<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+					<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
+					<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+					<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+					<li class="search-button">
+						<button class="search" id="search-button"><i class="fas fa-search"></i></button>
+					</li>
+				</ul>
+			</div>
+		</div> <!-- /.row -->
+	</div> <!-- /.container -->
+</div> <!-- /.top-header -->
