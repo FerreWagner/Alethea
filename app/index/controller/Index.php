@@ -32,6 +32,7 @@ class Index extends Controller
         $links    = db('link')->field('name,url')->order('sort', 'desc')->select();
         $keywords = (db('system')->field('keywords')->find())['keywords'];
         $recent   = db('article')->field('id,title')->order('order', 'desc')->where($where_blog)->limit(3)->select();
+        $now_post = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->limit(5)->select();
         $cate     = db('category')->field('id,catename')->order('sort', 'desc')->select();
 
         $this->view->assign([
@@ -40,6 +41,7 @@ class Index extends Controller
             'recent'   => $recent,
             'blogs'    => $blogs,
             'cate'     => $cate,
+            'now_post' => $now_post,
         ]);
         return $this->view->fetch('index');
     }

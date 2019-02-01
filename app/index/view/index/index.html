@@ -274,47 +274,20 @@
 				</div> <!-- /.sidebar-categories -->
 				<div class="sidebar-box bg-box sidebar-trending-post">
 					<h6 class="sidebar-title">Trending Post</h6>
-					<div class="single-trending-post clearfix">
-						<img src="__STATIC__/index/images/blog/5.jpg" alt="" class="float-left">
-						<div class="post float-left">
-							<h6><a href="#">New Benefits For Small Business </a></h6>
-							<ul>
-								<li class="tag">lifestyle</li>
-								<li class="date">16 march</li>
-							</ul>
-						</div> <!-- /.post -->
-					</div> <!-- /.single-trending-post -->
-					<div class="single-trending-post clearfix">
-						<img src="__STATIC__/index/images/blog/6.jpg" alt="" class="float-left">
-						<div class="post float-left">
-							<h6><a href="#">New Benefits For Small Business </a></h6>
-							<ul>
-								<li class="tag">art</li>
-								<li class="date">15 march</li>
-							</ul>
-						</div> <!-- /.post -->
-					</div> <!-- /.single-trending-post -->
-					<div class="single-trending-post clearfix">
-						<img src="__STATIC__/index/images/blog/7.jpg" alt="" class="float-left">
-						<div class="post float-left">
-							<h6><a href="#">New Benefits For Small Business </a></h6>
-							<ul>
-								<li class="tag">travel</li>
-								<li class="date">13 march</li>
-							</ul>
-						</div> <!-- /.post -->
-					</div> <!-- /.single-trending-post -->
-					<div class="single-trending-post clearfix">
-						<img src="__STATIC__/index/images/blog/8.jpg" alt="" class="float-left">
-						<div class="post float-left">
-							<h6><a href="#">New Benefits For Small Business </a></h6>
-							<ul>
-								<li class="tag">life</li>
-								<li class="date">10 march</li>
-							</ul>
-						</div> <!-- /.post -->
-					</div> <!-- /.single-trending-post -->
-				</div> <!-- /.sidebar-trending-post -->
+					{volist name="now_post" id="now_postss"}
+						<div class="single-trending-post clearfix">
+							<img src="{$now_postss.thumb}" alt="" class="float-left">
+							<div class="post float-left">
+								<h6><a href="#">{$now_postss.title}</a></h6>
+								<ul>
+									<li class="tag">{$now_postss.catename}</li>
+									<li class="date">{$now_postss.time|date="d M , Y",###}</li>
+								</ul>
+							</div> <!-- /.post -->
+						</div> <!-- /.single-trending-post -->
+					{/volist}
+					</div> <!-- /.sidebar-trending-post -->
+
 				<div class="sidebar-box bg-box sidebar-categories">
 					<h6 class="sidebar-title">Archives</h6>
 					<ul>
