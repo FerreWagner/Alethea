@@ -5,6 +5,7 @@ use think\Controller;
 
 /**
  * TODO 静态资源pic的删除
+ * TODO upload_max_filesize=6M
  *
  */
 
@@ -34,6 +35,7 @@ class Index extends Controller
         $recent   = db('article')->field('id,title')->order('order', 'desc')->where($where_blog)->limit(3)->select();
         $now_post = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->limit(5)->select();
         $cate     = db('category')->field('id,catename')->order('sort', 'desc')->select();
+        $banner   = db('article')->field('id,title,desc,content,pic')->where(['type' => config('article_type.banner')])->order('order','desc')->select();
 
         $this->view->assign([
             'links'    => $links,
@@ -42,6 +44,7 @@ class Index extends Controller
             'blogs'    => $blogs,
             'cate'     => $cate,
             'now_post' => $now_post,
+            'banner'   => $banner,
         ]);
         return $this->view->fetch('index');
     }

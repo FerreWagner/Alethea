@@ -114,7 +114,7 @@
 	<header class="theme-main-header">
 		<div class="container">
 			<div class="content-holder clearfix">
-				<div class="logo"><a href="/"><img src="__STATIC__/index/images/logo/logo.png" alt=""></a></div>
+				<div class="logo"><a href="/"><img style="margin-left: 418px;" src="__STATIC__/index/al.png" alt=""></a></div>
 				<!-- ============== Menu Warpper ================ -->
 				<div class="menu-wrapper">
 					<nav id="mega-menu-holder" class="clearfix">
@@ -140,11 +140,13 @@
 		<!-- MasterSlider -->
 		<div id="P_masterslider" class="master-slider-parent ms-panorama ms-parent-id-30" >
 			<!-- MasterSlider Main -->
+
 			<div id="main-slider-one" class="master-slider ms-skin-default" >
+				{volist name="banner" id="bannerss"}
 				<div class="ms-slide" data-delay="25" data-fill-mode="fill" >
 					<img class="ms-layer"
 						 src="__STATIC__/index/images/blank.gif"
-						 data-src="__STATIC__/index/images/home/panaroma1.jpg"
+						 data-src="{$bannerss.pic}"
 						 alt=""
 						 style=""
 						 data-effect="t(false,850,n,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -168,7 +170,8 @@
 						 data-origin="ml"
 						 data-position="normal"
 						 data-masked="true"
-						 data-mask-width="auto">CAMPING</div>
+						 data-mask-width="auto">{$bannerss.title}
+					</div>
 					<div class="ms-layer author-layer"
 						 style=""
 						 data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -181,7 +184,8 @@
 						 data-origin="ml"
 						 data-position="normal"
 						 data-masked="true"
-						 data-mask-width="666">Stone Meadow</div>
+						 data-mask-width="666">{$bannerss.desc}
+					</div>
 					<div class="ms-layer main-text"
 						 style=""
 						 data-effect="t(true,n,50,n,n,n,n,n,n,n,n,n,n,n,n)"
@@ -194,20 +198,24 @@
 						 data-origin="ml"
 						 data-position="normal"
 						 data-masked="true"
-						 data-mask-width="450">The group launched a campaign to protect the area from commercial development.</div>
-					<div class="ms-layer read-more"
-						 style=""
-						 data-effect="t(true,n,n,n,n,n,n,n,n,n,n,n,n,n,n)"
-						 data-duration="5000"
-						 data-delay="3500"
-						 data-ease="easeOutQuint"
-						 data-parallax="80"
-						 data-offset-x="120"
-						 data-offset-y="90"
-						 data-origin="ml"
-						 data-position="normal" ><a href="#">Read More</a></div>
+						 data-mask-width="450">{$bannerss.content}
+					</div>
+					<!--<div class="ms-layer read-more"-->
+						 <!--style=""-->
+						 <!--data-effect="t(true,n,n,n,n,n,n,n,n,n,n,n,n,n,n)"-->
+						 <!--data-duration="5000"-->
+						 <!--data-delay="3500"-->
+						 <!--data-ease="easeOutQuint"-->
+						 <!--data-parallax="80"-->
+						 <!--data-offset-x="120"-->
+						 <!--data-offset-y="90"-->
+						 <!--data-origin="ml"-->
+						 <!--data-position="normal" ><a href="#">Read More</a>-->
+					<!--</div>-->
 				</div>
+			{/volist}
 			</div> <!-- /#main-slider-one -->
+
 		</div>
 	</div> <!-- /.theme-banner-section-one -->
 
@@ -233,16 +241,7 @@
 						<h4 class="title"><a href="#">{$blogss.title}</a></h4>
 						<ul class="share-meta clearfix">
 							<li><a href="#"><i class="icon flaticon-comment"></i>View ({$blogss.see})</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (02)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i> Share</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
+							<li><a href="#"><i class="icon flaticon-arrows"></i>More (+)</a></li>
 						</ul>
 						<p>{$blogss.desc}</p>
 					</div> <!-- /.post-meta-box -->
@@ -260,7 +259,7 @@
 			<div class="col-lg-4 col-md-7 col-12 theme-main-sidebar">
 				<div class="sidebar-box bg-box about-me">
 					<h6 class="sidebar-title">About me</h6>
-					<img src="__STATIC__/index/images/home/1.jpg" alt="">
+					<img src="__STATIC__/index/default.png" alt="">
 					<p>Hi, I am David Walmart. As for now I'm only focusing my attention on enjoyment. I'm being my true self with the values, dreams and goals that I have....</p>
 					<div class="clearfix"><img src="__STATIC__/index/images/home/sign.png" alt="" class="signature float-right"></div>
 				</div> <!-- /.about-me -->
@@ -276,7 +275,7 @@
 					<h6 class="sidebar-title">Trending Post</h6>
 					{volist name="now_post" id="now_postss"}
 						<div class="single-trending-post clearfix">
-							<img src="{$now_postss.thumb}" alt="" class="float-left">
+							<img src="{$now_postss.thumb|default='__STATIC__/index/default.png'}" alt="{$now_postss.desc}" class="float-left">
 							<div class="post float-left">
 								<h6><a href="#">{$now_postss.title}</a></h6>
 								<ul>
@@ -327,7 +326,7 @@
 	-->
 	<footer class="theme-footer">
 		<div class="container">
-			<div class="logo"><a href="index.html"><img src="__STATIC__/index/images/logo/logo.png" alt=""></a></div>
+			<div class="logo"><a href="/"><img style="height: 180px;" src="__STATIC__/index/default.png" alt=""></a></div>
 			<p class="footer-text">Blog and Portfolio Theme</p>
 			<ul class="social-icon">
 				<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
@@ -335,7 +334,7 @@
 				<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
 				<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
 			</ul>
-			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.</p>
 		</div> <!-- /.container -->
 	</footer> <!-- /.theme-footer -->
 	
