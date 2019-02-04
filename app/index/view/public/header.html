@@ -11,7 +11,7 @@
 				<div class="breaking-news easyTicker">
 					<div class="wrapper">
 						{volist name="recent" id="recentss"}
-						<div class="list"><a href="{:url('index/index/singlePost', ['id' => $recentss.id])}">{$recentss.title}</a></div>
+						<div class="list"><a href="{:url('index/post/index', ['id' => $recentss.id])}">{$recentss.title}</a></div>
 						{/volist}
 					</div> <!-- /.wrapper -->
 				</div> <!-- /.breaking-news -->

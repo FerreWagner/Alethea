@@ -16,23 +16,8 @@
 
 <title>Home</title>
 
-<!-- Main style sheet -->
-<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/style.css">
-<!-- responsive style sheet -->
-<link rel="stylesheet" type="text/css" href="__STATIC__/index/css/responsive.css">
-<!-- Theme-Color css -->
-<link rel="stylesheet" id="jssDefault" href="__STATIC__/index/css/color.css">
+{include file='public/header_css' /}
 
-
-<!-- Fix Internet Explorer ______________________________________-->
-
-<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="__STATIC__/index/vendor/html5shiv.js"></script>
-	<script src="__STATIC__/index/vendor/respond.js"></script>
-<![endif]-->
-
-	
 </head>
 
 <body>
@@ -49,7 +34,7 @@
 </div> <!-- /.search-box -->
 
 
-<div class="main-page-wrapper">
+<div class="main-page-wrapper" style="margin-top: -42px;">
 	<!-- ===================================================
 		Loading Transition
 	==================================================== -->
@@ -213,16 +198,16 @@
 
 				{volist name="blogs" id="blogss"}
 				<div class="single-blog-post">
-					<div class="image-box">{if $blogss.thumb}<img src="{$blogss.thumb}" alt="{$blogss.keywords}">{/if}</div>
+					<div class="image-box">{if $blogss.thumb}<a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src="{$blogss.thumb}" alt="{$blogss.keywords}"></a>{/if}</div>
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
 							<li class="tag"><a href="{:url('index/index/index', ['cateid' => $blogss.cate])}">{$blogss.catename}</a></li>
 							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
 						</ul>
-						<h4 class="title"><a href="#">{$blogss.title}</a></h4>
+						<h4 class="title"><a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank">{$blogss.title}</a></h4>
 						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>View ({$blogss.see})</a></li>
-							<li><a href="#"><i class="icon flaticon-arrows"></i>More (+)</a></li>
+							<li><a><i class="icon flaticon-comment"></i>View ({$blogss.see})</a></li>
+							<li><a href="{:url('index/post/index', ['id' => $recentss.id])}"><i class="icon flaticon-arrows"></i>More (+)</a></li>
 						</ul>
 						<p>{$blogss.desc}</p>
 					</div> <!-- /.post-meta-box -->

@@ -15,20 +15,14 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#2c2c2c">
 
 <title>Home</title>
-
-{include file='public/header_css' /}
-
-<!-- Fix Internet Explorer ______________________________________-->
-
-<!--[if lt IE 9]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-	<script src="__STATIC__/index/vendor/html5shiv.js"></script>
-	<script src="__STATIC__/index/vendor/respond.js"></script>
-<![endif]-->
-
-
+	{include file='public/header_css' /}
 </head>
+<style>
+img{
+	display:inline-block;
+}
 
+</style>
 <body>
 <div class="search-box" id="searchWrapper">
 	<div id="close-button"></div>
@@ -72,39 +66,20 @@
 	<!--
 	=============================================
 		Main Blog Post Wrapper
-	============================================== 
+	==============================================
 	-->
 	<div class="container" style="margin-top: 40px;">
-		<div class="row">
-			<div class="blog-grid-style hover-effect-one">
-				{volist name="products" id="blogss"}
-				<div class="single-blog-post col-md-3" style="float: left;">
-					<div class="image-box">{if $blogss.pic}<a href="{:url('index/post/index', ['id' => $recentss.id])}" target="_blank"><img src="{$blogss.pic}" alt="{$blogss.keywords}"></a>{/if}</div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a>Project</a></li>
-							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
-						</ul>
-						<h4 class="title"><a href="{:url('index/post/index', ['id' => $recentss.id])}" target="_blank">{$blogss.title}</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a><i class="icon flaticon-comment"></i>View ({$blogss.see})</a></li>
-							<li><a href="{:url('index/post/index', ['id' => $recentss.id])}"><i class="icon flaticon-arrows"></i>More (+)</a></li>
-						</ul>
-						<p>{$blogss.desc}</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-				{/volist}
 
-				<div class="theme-pagination text-center" style="clear: left;">
-					<ul class="clearfix">
-						{$products->render()}
-					</ul>
-				</div> <!-- /.theme-pagination -->
-			</div> <!-- /.col- -->
-			
-
-		</div> <!-- /.row -->
 	</div> <!-- /.container -->
+	<hr style="width: 90%" />
+	<div style="margin: 100px 200px 20px 200px;">
+		<h3 style="text-align: center;margin-bottom: 20px;">
+			{$post.title}
+		</h3>
+		<div style="text-align: center;">
+			{$post.content}
+		</div>
+	</div>
 
 	{include file='public/footer' /}
 
