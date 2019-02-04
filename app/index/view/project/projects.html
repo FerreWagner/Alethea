@@ -68,221 +68,42 @@
 		Top Header
 	============================================== 
 	-->
-	<div class="top-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 col-12">
-					<div class="news-bell">Recent Post :</div>
-					<div class="breaking-news easyTicker">
-						<div class="wrapper">
-							<div class="list"><a href="#">One morning, when Gregor Samsa woke from troubled dreams.</a></div>
-							<div class="list"><a href="#">CNN's Kyung Lah sits down with Japan's World Cup-winning.</a></div>
-							<div class="list"><a href="#">Song Byeok had every reason to be pleased with his success.</a></div>
-						</div> <!-- /.wrapper -->
-					</div> <!-- /.breaking-news -->
-				</div>
-				<div class="col-lg-4 col-12">
-					<ul class="social-icon text-right">
-						<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-						<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-						<li class="search-button">
-							<button class="search" id="search-button"><i class="fas fa-search"></i></button>
-						</li>
-					</ul>
-				</div>
-			</div> <!-- /.row -->
-		</div> <!-- /.container -->
-	</div> <!-- /.top-header -->
-
-	
-
-	<!-- 
+	{include file='public/header' /}
+	<!--
 	=============================================
 		Theme Header
 	============================================== 
 	-->
-	<header class="theme-main-header">
-		<div class="container">
-			<div class="content-holder clearfix">
-				<div class="logo"><a href="index.html"><img src="__STATIC__/index/images/logo/logo.png" alt=""></a></div>
-				<!-- ============== Menu Warpper ================ -->
-				<div class="menu-wrapper">
-					<nav id="mega-menu-holder" class="clearfix">
-					   <ul class="clearfix">
-						  <li><a href="/">Home</a></li>
-					      <li><a href="{:url('project/index')}">Project</a></li>
-						  <li><a href="{:url('index/aboutMe')}">About me</a></li>
-						  <li><a href="{:url('index/contactMe')}">contact me</a></li>
-					   </ul>
-					</nav> <!-- /#mega-menu-holder -->
-				</div> <!-- /.menu-wrapper -->
-			</div> <!-- /.content-holder -->
-		</div> <!-- /.container -->
-	</header> <!-- /.theme-main-header -->
-
-
-	<!-- 
+	{include file='public/nav' /}
+	<!--
 	=============================================
 		Main Blog Post Wrapper
 	============================================== 
 	-->
-	<div class="container">
+	<div class="container" style="margin-top: 40px;">
 		<div class="row">
-			<div class="col-lg-4 col-4 blog-grid-style hover-effect-one">
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/1.jpg" alt=""></div>
+			<div class="blog-grid-style hover-effect-one">
+				{volist name="products" id="blogss"}
+				<div class="single-blog-post col-md-4" style="float: left;">
+					<div class="image-box">{if $blogss.pic}<img src="{$blogss.pic}" alt="{$blogss.keywords}">{/if}</div>
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Lifestyle</a></li>
-							<li class="date"><a href="#">15 may , 2018</a></li>
+							<li class="tag"><a>Project</a></li>
+							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
 						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
+						<h4 class="title"><a href="#">{$blogss.title}</a></h4>
 						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (04)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (02)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i> Share</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
+							<li><a href="#"><i class="icon flaticon-comment"></i>View ({$blogss.see})</a></li>
+							<li><a href="#"><i class="icon flaticon-arrows"></i>More (+)</a></li>
 						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
+						<p>{$blogss.desc}</p>
 					</div> <!-- /.post-meta-box -->
 				</div> <!-- /.single-blog-post -->
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/2.jpg" alt=""></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Travel</a></li>
-							<li class="date"><a href="#">14 may , 2018</a></li>
-						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (03)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (05)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i> Share</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
-						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/3.jpg" alt=""></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Art</a></li>
-							<li class="date"><a href="#">13 may , 2018</a></li>
-						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (13)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (25)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i>(03) Shares</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
-						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/4.jpg" alt=""></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Lifestyle</a></li>
-							<li class="date"><a href="#">10 may , 2018</a></li>
-						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (07)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (10)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i>(01) Shares</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
-						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/9.jpg" alt=""></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Art</a></li>
-							<li class="date"><a href="#">10 may , 2018</a></li>
-						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (02)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (01)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i>Share</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
-						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
-				<div class="single-blog-post">
-					<div class="image-box"><img src="__STATIC__/index/images/blog/10.jpg" alt=""></div>
-					<div class="post-meta-box bg-box">
-						<ul class="author-meta clearfix">
-							<li class="tag"><a href="#">Lifestyle</a></li>
-							<li class="date"><a href="#">05 may , 2018</a></li>
-						</ul>
-						<h4 class="title"><a href="#">This is a standard post with an image</a></h4>
-						<ul class="share-meta clearfix">
-							<li><a href="#"><i class="icon flaticon-comment"></i>Comments (10)</a></li>
-							<li><a href="#"><i class="icon flaticon-like-heart"></i>Likes (15)</a></li>
-							<li class="share-option">
-								<button><i class="icon flaticon-arrows"></i>(05) Shares</button>
-								<ul class="share-icon">
-									<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-									<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-								</ul>
-							</li> <!-- /.share-option -->
-						</ul>
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. .</p>
-					</div> <!-- /.post-meta-box -->
-				</div> <!-- /.single-blog-post -->
+				{/volist}
 
-				<div class="theme-pagination text-center">
+				<div class="theme-pagination text-center" style="clear: left;">
 					<ul class="clearfix">
-						<li><a href="#"><i class="icon flaticon-left-arrow"></i></a></li>
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#"><i class="icon flaticon-right-arrow"></i></a></li>
+						{$products->render()}
 					</ul>
 				</div> <!-- /.theme-pagination -->
 			</div> <!-- /.col- -->
@@ -291,35 +112,7 @@
 		</div> <!-- /.row -->
 	</div> <!-- /.container -->
 
-
-	<!--
-	=====================================================
-		Footer
-	=====================================================
-	-->
-	<footer class="theme-footer">
-		<div class="container">
-			<div class="logo"><a href="index.html"><img src="__STATIC__/index/images/logo/logo.png" alt=""></a></div>
-			<p class="footer-text">Blog and Portfolio Theme</p>
-			<ul class="social-icon">
-				<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-			</ul>
-			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-		</div> <!-- /.container -->
-	</footer> <!-- /.theme-footer -->
-	
-
-	
-
-	<!-- Scroll Top Button -->
-	<button class="scroll-top tran3s">
-		<i class="fa fa-angle-up" aria-hidden="true"></i>
-	</button>
-	
-
+	{include file='public/footer' /}
 
 <!-- Optional JavaScript _____________________________  -->
 

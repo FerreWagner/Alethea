@@ -111,27 +111,8 @@
 		Theme Header
 	============================================== 
 	-->
-	<header class="theme-main-header">
-		<div class="container">
-			<div class="content-holder clearfix">
-				<div class="logo"><a href="/"><img style="margin-left: 418px;" src="__STATIC__/index/al.png" alt=""></a></div>
-				<!-- ============== Menu Warpper ================ -->
-				<div class="menu-wrapper">
-					<nav id="mega-menu-holder" class="clearfix">
-					   <ul class="clearfix">
-						  <li><a href="/">Home</a></li>
-					   	  <li><a href="{:url('project/index')}">Project</a></li>
-						  <li><a href="{:url('index/aboutMe')}">About me</a></li>
-						  <li><a href="{:url('index/contactMe')}">contact me</a></li>
-					   </ul>
-					</nav> <!-- /#mega-menu-holder -->
-				</div> <!-- /.menu-wrapper -->
-			</div> <!-- /.content-holder -->
-		</div> <!-- /.container -->
-	</header> <!-- /.theme-main-header -->
-
-	
-	<!-- 
+	{include file='public/nav' /}
+	<!--
 	=============================================
 		Theme Main Banner
 	============================================== 
@@ -236,7 +217,7 @@
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
 							<li class="tag"><a href="{:url('index/index/index', ['cateid' => $blogss.cate])}">{$blogss.catename}</a></li>
-							<li class="date"><a href="#">{$blogss.time|date="d M , Y",###}</a></li>
+							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
 						</ul>
 						<h4 class="title"><a href="#">{$blogss.title}</a></h4>
 						<ul class="share-meta clearfix">
@@ -318,35 +299,7 @@
 		</div> <!-- /.row -->
 	</div> <!-- /.container -->
 
-
-	<!--
-	=====================================================
-		Footer
-	=====================================================
-	-->
-	<footer class="theme-footer">
-		<div class="container">
-			<div class="logo"><a href="/"><img style="height: 180px;" src="__STATIC__/index/default.png" alt=""></a></div>
-			<p class="footer-text">Blog and Portfolio Theme</p>
-			<ul class="social-icon">
-				<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-				<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-			</ul>
-			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.</p>
-		</div> <!-- /.container -->
-	</footer> <!-- /.theme-footer -->
-	
-
-	
-
-	<!-- Scroll Top Button -->
-	<button class="scroll-top tran3s">
-		<i class="fa fa-angle-up" aria-hidden="true"></i>
-	</button>
-	
-
+	{include file='public/footer' /}
 
 <!-- Optional JavaScript _____________________________  -->
 
