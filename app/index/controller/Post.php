@@ -10,7 +10,7 @@ class Post extends Controller
         /*
          * header posts
          */
-        $recent   = db('article')->field('id,title')->order('order', 'desc')->where(['type' => config('article_type.projects')])->limit(3)->select();
+        $recent   = db('article')->field('id,title')->order('order', 'desc')->where(['type' => config('article_type.blog')])->limit(3)->select();
         $this->view->assign([
             'recent'   => $recent,
         ]);
