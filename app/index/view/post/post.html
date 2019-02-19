@@ -68,12 +68,12 @@ img{
 		Main Blog Post Wrapper
 	==============================================
 	-->
-	<div class="container" style="margin-top: 140px;">
+	<div class="container">
 
 	</div> <!-- /.container -->
-	<hr style="width: 90%;" />
+	<hr style="width: 90%;border-top:4px solid #dddddd;" />
 	<div style="margin: 100px 200px 20px 200px;">
-		<h3 style="text-align: center;margin-bottom: 20px;">
+		<h3 style="text-align: center;margin-bottom: 40px;margin-top: 100px;">
 			{$post.title}
 		</h3>
 		<div style="text-align: center;">
@@ -81,7 +81,32 @@ img{
 		</div>
 	</div>
 
-	{include file='public/footer' /}
+	<!--
+	=====================================================
+		Footer
+	=====================================================
+	-->
+	<footer class="theme-footer" style="margin-top: 240px;">
+		<div class="container">
+			<div class="logo"><a href="/"><img style="height: 180px;" src="__STATIC__/index/default.png" alt="Alethea"></a></div>
+			<p class="footer-text">Blog and Portfolio Theme</p>
+			<ul class="social-icon">
+				<li class="icon"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+				<li class="icon"><a href="#"><i class="fab fa-twitter"></i></a></li>
+				<li class="icon"><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+				<li class="icon"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+			</ul>
+			<p class="copyright">Copyright &copy; 2018.Company name All rights reserved.</p>
+		</div> <!-- /.container -->
+	</footer> <!-- /.theme-footer -->
+
+
+
+
+	<!-- Scroll Top Button -->
+	<button class="scroll-top tran3s">
+		<i class="fa fa-angle-up" aria-hidden="true"></i>
+	</button>
 
 <!-- Optional JavaScript _____________________________  -->
 

@@ -15,17 +15,19 @@ class Index extends Controller
     public function index()
     {
         /**
-         * recent post
+         * # recent post
          * # links
          * # keywords
          * # ARCHIVES
-         * 分页数据
+         * # 分页数据
          * 文章keywords
-         * category
-         * index 770X400px
+         * # category
+         * # index 770X400px
          */
         $where_blog   = ['type' => config('article_type.blog')];
         $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->paginate(6);
+        $archives = 1;
+        //8月前的blog数据 TODO
 
         if (!empty(input('cateid'))){
             $where_blog = array_merge($where_blog, ['cate' => intval(input('cateid'))]);
@@ -61,14 +63,14 @@ class Index extends Controller
         }
     }
 
-    /**
-     * @return string
-     * contactMe page
-     */
-    public function contactMe()
-    {
-        return $this->view->fetch('index/contact');
-    }
+//    /**
+//     * @return string
+//     * contactMe page
+//     */
+//    public function contactMe()
+//    {
+//        return $this->view->fetch('index/contact');
+//    }
 
     /**
      * @return string

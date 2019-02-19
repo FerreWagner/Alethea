@@ -243,7 +243,7 @@
 						<div class="single-trending-post clearfix">
 							<img src="{$now_postss.thumb|default='__STATIC__/index/default.png'}" alt="{$now_postss.desc}" class="float-left">
 							<div class="post float-left">
-								<h6><a href="#">{$now_postss.title}</a></h6>
+								<h6><a href="{:url('index/post/index', ['id' => $now_postss.id])}">{$now_postss.title}</a></h6>
 								<ul>
 									<li class="tag">{$now_postss.catename}</li>
 									<li class="date">{$now_postss.time|date="d M , Y",###}</li>
