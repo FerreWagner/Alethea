@@ -1,15 +1,13 @@
 <?php
 namespace app\index\controller;
 
-use think\Controller;
-
 /**
  * TODO 静态资源pic的删除
  * TODO upload_max_filesize=6M
  *
  */
 
-class Index extends Controller
+class Index extends Common
 {
 
     public function index()
@@ -28,6 +26,8 @@ class Index extends Controller
         if (!empty(input('author'))){
             $input_author = input('author');
             $where = 'author like "%'.$input_author.'%"';
+        }else{
+            $where = 1;
         }
         $where_blog   = ['type' => config('article_type.blog')];
         $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->where($where)->paginate(6);

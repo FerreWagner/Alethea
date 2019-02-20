@@ -1,8 +1,24 @@
 <?php
 namespace app\index\controller;
 
-class Post extends Common
+use think\Controller;
+
+class Common extends Controller
 {
+    public function _initialize()
+    {
+        /*
+         * header posts
+         */
+        $recent   = db('article')->field('id,title')->order('order', 'desc')->where(['type' => config('article_type.blog')])->limit(3)->select();
+        $system   = db('system')->find(1);
+
+        $this->view->assign([
+            'recent'   => $recent,
+            'system'   => $system,
+
+        ]);
+    }
 
     public function index()
     {
