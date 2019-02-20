@@ -24,14 +24,18 @@ class Index extends Controller
          * # category
          * # index 770X400px
          */
+        //url模糊查询
+        if (!empty(input('author'))){
+            $input_author = input('author');
+            $where = 'author like "%'.$input_author.'%"';
+        }
         $where_blog   = ['type' => config('article_type.blog')];
-        $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->paginate(6);
-        $archives = 1;
-        //8月前的blog数据 TODO
+        $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where(['type' => config('article_type.blog')])->where($where)->paginate(6);
+        $archives = db('article')->field('author')->group('author')->order('see', 'desc')->select();  //ARCHIVES data
 
         if (!empty(input('cateid'))){
             $where_blog = array_merge($where_blog, ['cate' => intval(input('cateid'))]);
-            $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where($where_blog)->paginate(6);
+            $blogs    = db('article')->field('a.*,b.catename')->alias('a')->join('alexa_category b','a.cate=b.id')->order('a.id desc')->where($where_blog)->where($where)->paginate(6);
         }
         $links    = db('link')->field('name,url')->order('sort', 'desc')->select();
         $keywords = (db('system')->field('keywords')->find())['keywords'];
@@ -48,6 +52,7 @@ class Index extends Controller
             'cate'     => $cate,
             'now_post' => $now_post,
             'banner'   => $banner,
+            'archives' => $archives,
         ]);
         return $this->view->fetch('index');
     }

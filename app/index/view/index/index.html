@@ -254,16 +254,12 @@
 					</div> <!-- /.sidebar-trending-post -->
 
 				<div class="sidebar-box bg-box sidebar-categories">
-					<h6 class="sidebar-title">Archives</h6>
+					<h6 class="sidebar-title">Archives By Author</h6>
 					<ul>
-						<li><a href="#">May 2018</a></li>
-						<li><a href="#">April 2018</a></li>
-						<li><a href="#">March 2018</a></li>
-						<li><a href="#">February 2018</a></li>
-						<li><a href="#">January 2018</a></li>
-						<li><a href="#">December 2107</a></li>
-						<li><a href="#">November 2017</a></li>
-						<li><a href="#">October 2017</a></li>
+						{volist name="archives" id="archss"}
+							<li><a href="{:url('index/index/index', ['author' => $archss.author])}">{$archss.author}</a></li>
+						{/volist}
+
 					</ul>
 				</div> <!-- /.sidebar-categories -->
 				<div class="sidebar-box bg-box sidebar-tags">
