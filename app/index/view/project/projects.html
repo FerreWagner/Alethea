@@ -78,11 +78,23 @@
 		<div class="row">
 			<div class="blog-grid-style hover-effect-one">
 				{volist name="products" id="blogss"}
-				<div class="single-blog-post col-md-3" style="float: left;">
-					<div class="image-box">{if $blogss.pic}<a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src="{$blogss.pic}" alt="{$blogss.keywords}"></a>{/if}</div>
+				<!--<div class="single-blog-post col-md-3" style="float: left;">-->
+				<?php
+					$temp_s = [];
+					foreach($products as $_k => $_v){
+						$temp_s[] = $_v;
+					}
+					if(count($temp_s) > 1){
+						echo '<div class="single-blog-post col-md-3" style="float: left;">';
+					}else{
+						echo '<div class="single-blog-post col-md-8" style="float: left;">';
+					}
+				?>
+
+					<div class="image-box"><a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src={$blogss.pic|default='__STATIC__/index/default.png'} alt="{$blogss.keywords}"></a></div>
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
-							<li class="tag"><a>Project</a></li>
+							<li class="tag"><a style="background: #2da731;">Project</a></li>
 							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
 						</ul>
 						<h4 class="title"><a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank">{$blogss.title}</a></h4>
@@ -101,7 +113,7 @@
 					</ul>
 				</div> <!-- /.theme-pagination -->
 			</div> <!-- /.col- -->
-			
+
 
 		</div> <!-- /.row -->
 	</div> <!-- /.container -->

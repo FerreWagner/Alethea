@@ -201,7 +201,7 @@
 					<div class="image-box">{if $blogss.thumb}<a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src="{$blogss.thumb}" alt="{$blogss.keywords}"></a>{/if}</div>
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
-							<li class="tag"><a href="{:url('index/index/index', ['cateid' => $blogss.cate])}">{$blogss.catename}</a></li>
+							<li class="tag"><a style="background: #2da731;">Blog</a> </li><li class="tag"><a href="{:url('index/index/index', ['cateid' => $blogss.cate])}">{$blogss.catename}</a></li>
 							<li class="date"><a>{$blogss.time|date="d M , Y",###}</a></li>
 						</ul>
 						<h4 class="title"><a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank">{$blogss.title}</a></h4>
