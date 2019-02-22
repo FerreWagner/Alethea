@@ -38,18 +38,18 @@ Developed:      heloshape (http://heloshape.com/)
 **/
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
 /*----bootstrap css ----- */
-@import url('../vendor/bootstrap/css/bootstrap.min.css');
+@import url('https://cdn.bootcss.com/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
 /*---- Master Slider ---*/
 @import url('../vendor/masterslider/css/masterslider.main.css');
 /*------- menu ------*/
-@import url('../vendor/menu/dist/css/slimmenu.css');
+@import url('http://alethea.cdn.fsociaty.com/slimmenu.css');
 /*--------- Flaticon ---------*/
 @import url('../fonts/icon/font/flaticon.css');
 /*----owl-carousel css----*/
-@import url('../vendor/owl-carousel/owl.carousel.css');
-@import url('../vendor/owl-carousel/owl.theme.css');
+@import url('http://alethea.cdn.fsociaty.com/owl.carousel.css');
+@import url('http://alethea.cdn.fsociaty.com/owl.theme.css');
 /*----------- Fancybox css -------*/
-@import url('../vendor/fancybox/dist/jquery.fancybox.min.css');
+@import url('http://alethea.cdn.fsociaty.com/jquery.fancybox.min.css');
 
 
 /*** 
