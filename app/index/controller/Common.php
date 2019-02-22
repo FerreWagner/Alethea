@@ -12,11 +12,14 @@ class Common extends Controller
          */
         $recent   = db('article')->field('id,title')->order('order', 'desc')->where(['type' => config('article_type.blog')])->limit(3)->select();
         $system   = db('system')->find(1);
+        if ($system['is_close'] == config('website.close')){
+            echo '<h2 style="text-align: center;margin-top: 200px;">Alethea已关闭，谢谢</h2>';
+            die;
+        }
 
         $this->view->assign([
             'recent'   => $recent,
             'system'   => $system,
-
         ]);
     }
 

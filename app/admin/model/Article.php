@@ -31,14 +31,16 @@ class Article extends Model
                     }
                 }
             }elseif (self::getSystem()['type'] == config('website.qiniu')){
-                
-                    $file = request()->file('thumb');
-                    //本地路径
-                    $filePath = $file->getRealPath();
+//                    $file = request()->file('thumb');
+//                    //本地路径
+//                    $filePath = $file->getRealPath();
+                    $filePath = $_FILES['thumb']['tmp_name'];
                     //获取后缀
-                    $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
+                    $ext = pathinfo($_FILES['thumb']['name'], PATHINFO_EXTENSION);
+//                    $ext = pathinfo($file->getInfo('name'), PATHINFO_EXTENSION);
                     //上传到七牛后保存的文件名(加盐)
-                    $key = config('qiniu.salt').substr(md5($file->getRealPath()) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+                    $key = config('qiniu.salt').substr(md5($filePath) , 0, 5). date('YmdHis') . rand(0, 9999) . '.' . $ext;
+
                     //构建鉴权对象
                     $auth = new Auth(config('qiniu.ak'), config('qiniu.sk'));
                     //要上传的空间
@@ -47,7 +49,7 @@ class Article extends Model
                     $uploadMgr = new UploadManager();
                     //调用uploadmanager的putfile方法进行文件的上传
                     list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-                    $_data['pic']    = config('qiniu.domain').'/'.$ret['key'];
+                    $_data['pic']    = 'http://'.config('qiniu.domain').'/'.$ret['key'];
                     $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
             }elseif (self::getSystem()['type'] == config('website.oss')){
                 //TODO 阿里云OSS上传功能
@@ -105,9 +107,8 @@ class Article extends Model
                 $uploadMgr = new UploadManager();
                 //调用uploadmanager的putfile方法进行文件的上传
                 list($ret, $err) = $uploadMgr->putFile($token, $key, $filePath);
-                
+                $_data['pic'] = 'http://'.config('qiniu.domain').'/'.$ret['key'];
                 $err ? $_data['thumb'] = '图片上传失败' : $_data['thumb'] = config('qiniu.domain').'/'.$ret['key'];
-                
             }
                 
         });

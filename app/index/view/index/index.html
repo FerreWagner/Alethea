@@ -201,7 +201,7 @@
 
 				{volist name="blogs" id="blogss"}
 				<div class="single-blog-post">
-					<div class="image-box">{if $blogss.thumb}<a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src="{$blogss.thumb}" alt="{$blogss.keywords}"></a>{/if}</div>
+					<div class="image-box">{if $blogss.pic}<a href="{:url('index/post/index', ['id' => $blogss.id])}" target="_blank"><img src="{$blogss.pic}" alt="{$blogss.keywords}"></a>{/if}</div>
 					<div class="post-meta-box bg-box">
 						<ul class="author-meta clearfix">
 							<li class="tag"><a style="background: #2da731;">Blog</a> </li><li class="tag"><a href="{:url('index/index/index', ['cateid' => $blogss.cate])}">{$blogss.catename}</a></li>
@@ -244,7 +244,7 @@
 					<h6 class="sidebar-title">Trending Post</h6>
 					{volist name="now_post" id="now_postss"}
 						<div class="single-trending-post clearfix">
-							<img src="{$now_postss.thumb|default='__STATIC__/index/default.png'}" alt="{$now_postss.desc}" class="float-left">
+							<img src="{$now_postss.pic|default='__STATIC__/index/default.png'}" alt="{$now_postss.desc}" class="float-left">
 							<div class="post float-left">
 								<h6><a href="{:url('index/post/index', ['id' => $now_postss.id])}">{$now_postss.title}</a></h6>
 								<ul>
