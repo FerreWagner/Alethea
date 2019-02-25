@@ -27,7 +27,7 @@ class Admin extends Base
     {
         $admin = AdminModel::paginate(config('conf.page'));
         
-        //admin search function
+        //admin search function 点击改变状态，卸任状态无法登录后台
         if ($request->isPost()){
             $search = $request->param();
             
